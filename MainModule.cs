@@ -19,7 +19,7 @@ namespace VirtualArtGallery
 
             while (true)
             {
-                Console.Clear();
+                
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("======================================================================================================================");
                 Console.WriteLine("                                          VIRTUAL ART GALLERY CONSOLE APP        ");
@@ -447,16 +447,22 @@ namespace VirtualArtGallery
                             Console.Write("Enter User ID : ");
                             int id = int.Parse(Console.ReadLine());
                             list = virtualArtGalleryImpl.GetUserFavoriteArtworks(id);
-
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            foreach (int artworkID in list)
+                            if (list != null)
                             {
-                                Console.WriteLine($"ArtwordID : {artworkID}");
-                                Artwork artwork = virtualArtGalleryImpl.GetArtworkById(artworkID);
-                                virtualArtGalleryImpl.DisplayArtwork(artwork);
-                                
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                foreach (int artworkID in list)
+                                {
+                                    Console.WriteLine($"ArtwordID : {artworkID}");
+                                    Artwork artwork = virtualArtGalleryImpl.GetArtworkById(artworkID);
+                                    virtualArtGalleryImpl.DisplayArtwork(artwork);
+
+                                }
+                                Console.ResetColor();
                             }
-                            Console.ResetColor();
+                            else
+                            {
+                                Console.WriteLine("NO RESULT FOUND");
+                            }
 
                         }
                         catch(Exception ex )

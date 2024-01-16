@@ -261,30 +261,44 @@ namespace VirtualArtGallery.DAO
         /// </summary>
         public List<int> GetUserFavoriteArtworks(int userId)
         {
-            List<int> userFavorites = new List<int>();
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = connection;
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = $"Select * from User_Favorite_Artwork where UserID = {userId}";
-            connection.Open();
-
-            SqlDataReader data = cmd.ExecuteReader();
-
-            while (data.Read())
+            try
             {
-                userFavorites.Add(Convert.ToInt32(data["ArtworkID"]));
-            }
-           
-            if (userFavorites.Count< 1)
-           
-            {
-                throw new UserNotFoundException();
-            }
-            data.Close();
-            connection.Close();
+                List<int> userFavorites = new List<int>();
 
-            return userFavorites;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = connection;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = $"Select * from User_Favorite_Artwork where UserID = {userId}";
+                connection.Open();
+
+                SqlDataReader data = cmd.ExecuteReader();
+
+                while (data.Read())
+                {
+                    userFavorites.Add(Convert.ToInt32(data["ArtworkID"]));
+                }
+
+                if (userFavorites.Count < 1)
+
+                {
+                    throw new UserNotFoundException();
+                }
+                data.Close();
+                
+
+                return userFavorites;
+            }
+            catch(UserNotFoundException userex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"|| ERROR : {userex.Message} ||");
+                Console.ResetColor();
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         /// <summary>
