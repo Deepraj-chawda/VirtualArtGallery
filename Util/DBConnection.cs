@@ -25,7 +25,7 @@ namespace VirtualArtGallery.Util
                     {
                         // Open the connection
                         connection = new SqlConnection(connectionString);
-                        Console.WriteLine("Connected to the database.");
+                        
                     }
                     catch (Exception ex)
                     {

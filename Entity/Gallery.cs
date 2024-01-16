@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace VirtualArtGallery.Entity
         public int Curator { get; set; } // Reference to ArtistID
         public string OpeningHours { get; set; }
 
-        public Gallery(int galleryID, string name, string description, string location, int curator, string openingHours)
+        public Gallery( string name, string description, string location, int curator, string openingHours,[Optional] int galleryID)
         {
             GalleryID = galleryID;
             Name = name;

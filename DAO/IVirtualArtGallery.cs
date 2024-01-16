@@ -20,5 +20,29 @@ namespace VirtualArtGallery.DAO
         bool AddArtworkToFavorite(int userId, int artworkId);
         bool RemoveArtworkFromFavorite(int userId, int artworkId);
         List<int> GetUserFavoriteArtworks(int userId);
+
+
+        //gallery management
+        bool AddGallery(Gallery gallery);
+        Gallery GetGalleryById(int galleryID);
+        bool RemoveGallery(int galleryID);
+        bool UpdateGallery(Gallery gallery);
+
+
+        //user management
+        User UserLogin(string username, string password);
+        bool UserRegister();
+
+        //additional methods
+        List<Artwork> GetAllArtwork();
+        List<Gallery> GetAllGallery();
+        List<Artist> GetAllArtist();
+
+        //display details
+        void DisplayArtist(Artist artist);
+        void DisplayArtwork(Artwork artwork);
+        void DisplayGallery(Gallery gallery);
+
+
     }
 }

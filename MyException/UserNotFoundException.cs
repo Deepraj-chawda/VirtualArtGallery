@@ -12,5 +12,7 @@ namespace VirtualArtGallery.MyException
         {
             // customize the error message based on your requirements
         }
+
+        public UserNotFoundException(string message) : base(message) { }
     }
 }

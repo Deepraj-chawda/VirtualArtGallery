@@ -19,6 +19,10 @@ namespace VirtualArtGallery.Entity
         public string ProfilePicture { get; set; }
         public List<int> FavoriteArtworks { get; set; }
 
+        public User()
+        {
+
+        }
         public User(int userID, string username, string password, string email, string firstName, string lastName, DateTime dateOfBirth, string profilePicture, List<int> favoriteArtworks)
         {
             UserID = userID;

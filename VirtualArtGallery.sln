@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualArtGallery", "VirtualArtGallery.csproj", "{C02AA54C-4C6B-4C36-BDD3-CEEEA3118323}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "..\UnitTest\UnitTest.csproj", "{D8255FEE-B5E0-4A22-94BF-E25C5AA458A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C02AA54C-4C6B-4C36-BDD3-CEEEA3118323}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C02AA54C-4C6B-4C36-BDD3-CEEEA3118323}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C02AA54C-4C6B-4C36-BDD3-CEEEA3118323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8255FEE-B5E0-4A22-94BF-E25C5AA458A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8255FEE-B5E0-4A22-94BF-E25C5AA458A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8255FEE-B5E0-4A22-94BF-E25C5AA458A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8255FEE-B5E0-4A22-94BF-E25C5AA458A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
