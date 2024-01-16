@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -235,7 +236,9 @@ namespace VirtualArtGallery.DAO
         public bool AddArtworkToFavorite(int userId, int artworkId)
         {
             try
-            {
+            {   //check artwork present or not
+                Artwork checkArtwork = GetArtworkById(artworkId);
+
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = connection;
                 cmd.CommandType = System.Data.CommandType.Text;
@@ -308,6 +311,10 @@ namespace VirtualArtGallery.DAO
         {
             try
             {
+
+                //check artwork present or not
+                Artwork checkArtwork = GetArtworkById(artworkId);
+
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = connection;
                 cmd.CommandType = System.Data.CommandType.Text;
@@ -401,6 +408,10 @@ namespace VirtualArtGallery.DAO
                         
                         return gallery;
                     }
+                    else
+                    {
+                        throw new Exception("Gallery not Found");
+                    }
 
                 }
             }catch(Exception ex)
@@ -424,6 +435,9 @@ namespace VirtualArtGallery.DAO
         {
             try
             {
+                // check gallery present or not
+                Gallery checkgallery = GetGalleryById(galleryID);
+
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = connection;
                 cmd.CommandText = $"DELETE FROM Gallery WHERE GalleryID = {galleryID}";
@@ -453,6 +467,9 @@ namespace VirtualArtGallery.DAO
         {
             try
             {
+                //check gallery present or not
+                Gallery checkgallery = GetGalleryById(gallery.GalleryID);
+
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = connection;
                 cmd.CommandType = System.Data.CommandType.Text;
