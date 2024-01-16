@@ -851,7 +851,7 @@ namespace VirtualArtGallery.DAO
         public void DisplayArtwork(Artwork artwork)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("------------------------");
+            Console.WriteLine("--------------------------------");
             Console.WriteLine($"ArtwordID : {artwork.ArtworkID}");
             Console.WriteLine($"Title : {artwork.Title}");
             Console.WriteLine($"Description : {artwork.Description}");
@@ -868,7 +868,7 @@ namespace VirtualArtGallery.DAO
         public void DisplayArtist(Artist artist)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("------------------------");
+            Console.WriteLine("------------------------------");
             Console.WriteLine($"ArtistID : {artist.ArtistID}");
             Console.WriteLine($"Name : {artist.Name}");
             Console.WriteLine($"Biography : {artist.Biography}");
