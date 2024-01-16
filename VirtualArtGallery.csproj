@@ -59,6 +59,7 @@
     <Compile Include="Entity\User.cs" />
     <Compile Include="Main\MainModule.cs" />
     <Compile Include="MyException\ArtWorkNotFoundException.cs" />
+    <Compile Include="MyException\GalleryNotFoundException.cs" />
     <Compile Include="MyException\UserNotFoundException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\DBConnection.cs" />

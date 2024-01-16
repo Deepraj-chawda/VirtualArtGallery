@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Virtual_Art_Gallery.MyException;
 using VirtualArtGallery.Entity;
 using VirtualArtGallery.MyException;
 using VirtualArtGallery.Util;
@@ -410,7 +411,7 @@ namespace VirtualArtGallery.DAO
                     }
                     else
                     {
-                        throw new Exception("Gallery not Found");
+                        throw new GalleryNotFoundException();
                     }
 
                 }
