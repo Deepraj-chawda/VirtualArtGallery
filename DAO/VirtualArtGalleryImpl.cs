@@ -837,7 +837,7 @@ namespace VirtualArtGallery.DAO
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return true;
+                return false;
             }
             finally
             {
@@ -900,6 +900,13 @@ namespace VirtualArtGallery.DAO
 
                 Console.Write("Enter Curator (Reference to ArtistID) : ");
                 int curator = int.Parse(Console.ReadLine());
+                //Validation
+                bool isAvailable = CheckArtistID(curator);
+
+                if (!isAvailable)
+                {
+                    throw new Exception("Artist ID not Found");
+                }
 
                 Console.Write("Enter OpeningHours : ");
                 string openingHours = Console.ReadLine();
