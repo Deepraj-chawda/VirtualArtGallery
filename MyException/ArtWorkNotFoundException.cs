@@ -10,7 +10,10 @@ namespace VirtualArtGallery.MyException
     {
         public ArtWorkNotFoundException() : base("Artwork not found in the database.")
         {
+     
             // the error message based on your requirements
         }
+
+        public ArtWorkNotFoundException(string message) : base(message) { }
     }
 }

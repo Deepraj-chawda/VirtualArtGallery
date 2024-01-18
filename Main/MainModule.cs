@@ -352,36 +352,32 @@ namespace VirtualArtGallery
                     case "6":
                         try
                         {
-                            Console.WriteLine("Enter Artwork ID to add to favorites:");
+                            Console.Write("Enter Artwork ID to add to favorites:");
                             if (int.TryParse(Console.ReadLine(), out int artworkId))
                             {
-                                Console.WriteLine("Enter User ID:");
-                                if (int.TryParse(Console.ReadLine(), out int userId))
+                                
+                                int userId = user.UserID;
+                                
+                                bool addToFavoritesStatus = virtualArtGalleryImpl.AddArtworkToFavorite(userId, artworkId);
+
+                                if (addToFavoritesStatus)
                                 {
-                                    bool addToFavoritesStatus = virtualArtGalleryImpl.AddArtworkToFavorite(userId, artworkId);
-
-                                    if (addToFavoritesStatus)
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.ForegroundColor = ConsoleColor.Green;
                                         
-                                        Console.WriteLine("║   Artwork added to favorites successfully  ║");
+                                    Console.WriteLine("║   Artwork added to favorites successfully  ║");
                                         
-                                        Console.ResetColor();
-                                    }
-                                    else
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Red;
-
-                                        Console.WriteLine("║   Failed to add artwork to favorites   ║");
-
-                                        Console.ResetColor();
-                                    }
-                                    
+                                    Console.ResetColor();
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Invalid User ID. Please enter a valid numeric ID.");
+                                    Console.ForegroundColor = ConsoleColor.Red;
+
+                                    Console.WriteLine("║   Failed to add artwork to favorites   ║");
+
+                                    Console.ResetColor();
                                 }
+                                    
+                                
                             }
                             else
                             {
@@ -399,35 +395,30 @@ namespace VirtualArtGallery
                     case "7":
                         try
                         {
-                            Console.WriteLine("Enter Artwork ID to Remove from favorites:");
+                            Console.Write("Enter Artwork ID to Remove from favorites:");
                             if (int.TryParse(Console.ReadLine(), out int artworkId))
                             {
-                                Console.Write("Enter User ID:");
-                                if (int.TryParse(Console.ReadLine(), out int userId))
-                                {
-                                    bool removeFromFavoritesStatus = virtualArtGalleryImpl.RemoveArtworkFromFavorite(userId, artworkId);
+                                int userId = user.UserID;
+                               
+                                bool removeFromFavoritesStatus = virtualArtGalleryImpl.RemoveArtworkFromFavorite(userId, artworkId);
 
-                                    if (removeFromFavoritesStatus)
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Green;
+                                if (removeFromFavoritesStatus)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
                                         
-                                        Console.WriteLine("║   Artwork removed from favorites successfully  ║");
+                                    Console.WriteLine("║   Artwork removed from favorites successfully  ║");
                                         
-                                        Console.ResetColor();
-                                    }
-                                    else
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Red;
-                                       
-                                        Console.WriteLine("║   Failed to remove artwork to favorites  ║");
-                                   
-                                        Console.ResetColor();
-                                    }
+                                    Console.ResetColor();
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Invalid User ID. Please enter a valid numeric ID.");
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                       
+                                    Console.WriteLine("║   Failed to remove artwork to favorites  ║");
+                                   
+                                    Console.ResetColor();
                                 }
+                                
                             }
                             else
                             {
@@ -444,8 +435,8 @@ namespace VirtualArtGallery
                         try
                         {
                             List<int> list = new List<int>();
-                            Console.Write("Enter User ID : ");
-                            int id = int.Parse(Console.ReadLine());
+
+                            int id = user.UserID;
                             list = virtualArtGalleryImpl.GetUserFavoriteArtworks(id);
                             if (list != null)
                             {

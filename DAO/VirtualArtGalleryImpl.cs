@@ -248,9 +248,16 @@ namespace VirtualArtGallery.DAO
                 int addFavoriteStatus = cmd.ExecuteNonQuery();
                 return (addFavoriteStatus > 0);
             }
+            catch(ArtWorkNotFoundException artworkex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"|| Error : {artworkex.Message} ||");
+                Console.ResetColor();
+                return false;
+            }
             catch(Exception ex)
             {
-                Console.WriteLine($"An error occurred during Insert operation: {ex.Message}");
+                Console.WriteLine($"Artwork with Artwork ID : {artworkId} already exist in your Favorites");
                 return false;
             }
             finally
@@ -285,7 +292,7 @@ namespace VirtualArtGallery.DAO
                 if (userFavorites.Count < 1)
 
                 {
-                    throw new UserNotFoundException();
+                    throw new UserNotFoundException("You have not added any artwork in favorites.");
                 }
                 data.Close();
                 
@@ -322,11 +329,21 @@ namespace VirtualArtGallery.DAO
                 cmd.CommandText = $"DELETE FROM User_Favorite_Artwork  WHERE UserID = {userId} AND ArtworkID = { artworkId }";
                 connection.Open();
                 int removeFavoriteStatus = cmd.ExecuteNonQuery();
-                return removeFavoriteStatus > 0;
+                if (removeFavoriteStatus > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    throw new ArtWorkNotFoundException($"Artwork with Artwork ID : {artworkId} not found in your Favorites");
+                }
+                
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred during Delete operation: {ex.Message}");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"|| ERROR : {ex.Message}  ||");
+                Console.ResetColor();
                 return false;
             }
             finally
